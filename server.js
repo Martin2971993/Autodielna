@@ -4,6 +4,7 @@ require('dotenv').config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+app.use(cors());
 
 const app = express();
 const PORT = process.env.PORT || 5000; // Ak PORT nie je v .env, použije 5000
@@ -21,9 +22,7 @@ if (!process.env.MONGO_URI) {
 // 📌 Pripojenie k MongoDB
 mongoose
   .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+   })
   .then(() => console.log("✅ MongoDB pripojené"))
   .catch((err) => console.error("❌ Chyba pri pripojení k MongoDB:", err));
 
